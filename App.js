@@ -61,7 +61,7 @@ export default class App extends Component {
           <Dog key={this.state.breed} breed={this.state.breed} onApprove={() => this.approve()} onReject={() => this.reject()} />
         </View>
         <View style={[styles.flex, styles.stats]}>
-          <Text style={styles.heading}>Your top 🐕</Text>
+          <Text style={styles.heading}>Your top 🐕🐕🐕</Text>
 
           {this.renderStats()}
         </View>
@@ -87,7 +87,7 @@ export default class App extends Component {
       .splice(0, 3);
 
     return orderedStats.map((breed, key) => {
-      return <Text key={key}>{(key + 1)}. {breed.name} ({breed.count})</Text>;
+      return <Text style={styles.list} key={key}>{(key + 1)}. {breed.name.charAt(0).toUpperCase() + breed.name.slice(1)} ({breed.count})</Text>;
     });
   }
 }
@@ -99,9 +99,16 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  list: {
+    fontSize: 16,
     marginBottom: 10,
   },
   stats: {
+    shadowColor: '#000',
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
     flex: 0.5,
     height: 100,
     padding: 20,
