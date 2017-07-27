@@ -61,6 +61,8 @@ export default class App extends Component {
           <Dog key={this.state.breed} breed={this.state.breed} onApprove={() => this.approve()} onReject={() => this.reject()} />
         </View>
         <View style={[styles.flex, styles.stats]}>
+          <Text style={styles.heading}>Your top 🐕</Text>
+
           {this.renderStats()}
         </View>
       </View>
@@ -94,8 +96,14 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1,
   },
+  heading: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
   stats: {
     flex: 0.5,
     height: 100,
+    padding: 20,
   },
 });
