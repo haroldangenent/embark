@@ -27,7 +27,7 @@ export default class Stats extends Component {
 
   render() {
     return (
-      <View style={[styles.flex, styles.stats]}>
+      <View style={[styles.stats]}>
         <Text style={styles.heading}>Your top 🐕🐕🐕</Text>
 
         {this.renderList()}
@@ -59,9 +59,6 @@ export default class Stats extends Component {
 }
 
 const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
   heading: {
     fontSize: 30,
     fontWeight: 'bold',
