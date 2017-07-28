@@ -27,8 +27,8 @@ export default class Stats extends Component {
 
   render() {
     return (
-      <View style={styles.stats}>
-        <Text style={styles.heading}>Your top 🐕🐕🐕</Text>
+      <View style={componentStyles.stats}>
+        <Text style={componentStyles.heading}>Your top 🐕🐕🐕</Text>
 
         {this.renderList()}
       </View>
@@ -53,12 +53,12 @@ export default class Stats extends Component {
       .splice(0, 3);
 
     return orderedStats.map((breed, key) => {
-      return <Text style={styles.list} key={key}>{(key + 1)}. {breed.name.charAt(0).toUpperCase() + breed.name.slice(1)} ({breed.count})</Text>;
+      return <Text style={componentStyles.list} key={key}>{(key + 1)}. {breed.name.charAt(0).toUpperCase() + breed.name.slice(1)} ({breed.count})</Text>;
     });
   }
 }
 
-const styles = StyleSheet.create({
+const componentStyles = StyleSheet.create({
   heading: {
     fontSize: 30,
     fontWeight: 'bold',

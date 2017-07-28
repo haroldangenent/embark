@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, View } from 'react-native';
+import styles from '../styles';
 
 export default class Dog extends Component {
   constructor(props) {
@@ -57,16 +58,13 @@ export default class Dog extends Component {
         onStartShouldSetResponder={(event) => this.startDrag(event)}
         onResponderRelease={() => this.endDrag()}
       >
-        <Image source={{uri: this.state.image}} style={[styles.flex, styles.image]} />
+        <Image source={{uri: this.state.image}} style={[styles.flex, componentStyles.image]} />
       </View>
     );
   }  
 }
 
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
+const componentStyles = StyleSheet.create({
   image: {
     alignSelf: 'stretch',
     resizeMode: 'cover',

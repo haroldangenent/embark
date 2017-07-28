@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, StatusBar } from 'react-native';
 import Dog from './components/Dog';
 import React, { Component } from 'react';
 import Stats from './components/Stats';
+import styles from './styles';
 
 export default class App extends Component {
   constructor() {
@@ -61,9 +62,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
-});
