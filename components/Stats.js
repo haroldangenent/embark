@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class Stats extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      stats: {},
+    }
+  }
+
+  approve(breed) {
+    this.setStats(breed, 1);
+  }
+
+  reject(breed) {
+    this.setStats(breed, -1);
+  }
+
+  setStats(breed, delta) {
+    const newStats = this.state.stats;
+    newStats[breed] = !newStats[breed] ? delta : newStats[breed] + delta;
+
+    this.setState({ stats: newStats });
+  }
+
   render() {
     return (
       <View style={[styles.flex, styles.stats]}>
@@ -13,15 +36,15 @@ export default class Stats extends Component {
   }
 
   renderList() {
-    if (!Object.keys(this.props.stats).length) {
+    if (!Object.keys(this.state.stats).length) {
       return <Text>Swipe right to approve, left to decline</Text>
     }
 
-    const orderedStats = Object.keys(this.props.stats)
+    const orderedStats = Object.keys(this.state.stats)
       .map((breed) => {
         return {
           name: breed,
-          count: this.props.stats[breed],
+          count: this.state.stats[breed],
         };
       })
       .sort((a, b) => {

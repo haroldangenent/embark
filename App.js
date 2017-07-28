@@ -11,7 +11,6 @@ export default class App extends Component {
 
     this.state = {
       breed: null,
-      stats: {},
     }
   }
 
@@ -25,29 +24,12 @@ export default class App extends Component {
       });
   }
 
-  approve() {
-    this.setStats(this.state.breed, 1);
-    this.next();
-  }
-
-  reject() {
-    this.setStats(this.state.breed, -1);
-    this.next();
-  }
-
   next() {
     this.setState({ breed: this.getRandomBreed() })
   }
 
   getRandomBreed() {
     return this.breeds[Math.floor(Math.random() * this.breeds.length)];
-  }
-
-  setStats(breed, delta) {
-    const newStats = this.state.stats;
-    newStats[this.state.breed] = !newStats[this.state.breed] ? delta : newStats[this.state.breed] + delta;
-
-    this.setState({ stats: newStats });
   }
 
   render() {
@@ -60,10 +42,21 @@ export default class App extends Component {
         <StatusBar hidden={true} />
 
         <View style={styles.flex}>
-          <Dog key={this.state.breed} breed={this.state.breed} onApprove={() => this.approve()} onReject={() => this.reject()} />
+          <Dog
+            key={this.state.breed}
+            breed={this.state.breed}
+            onApprove={() => {
+              this.refs.stats.approve(this.state.breed);
+              this.next();
+            }}
+            onReject={() => {
+              this.refs.stats.reject(this.state.breed);
+              this.next();
+            }}
+          />
         </View>
 
-        <Stats stats={this.state.stats} />
+        <Stats ref="stats" />
       </View>
     );
   }
