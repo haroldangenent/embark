@@ -11,14 +11,14 @@ export default class Stats extends Component {
   }
 
   approve(breed) {
-    this.setStats(breed, 1);
+    this.update(breed, 1);
   }
 
   reject(breed) {
-    this.setStats(breed, -1);
+    this.update(breed, -1);
   }
 
-  setStats(breed, delta) {
+  update(breed, delta) {
     const newStats = this.state.stats;
     newStats[breed] = !newStats[breed] ? delta : newStats[breed] + delta;
 
