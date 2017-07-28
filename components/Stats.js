@@ -27,7 +27,7 @@ export default class Stats extends Component {
 
   render() {
     return (
-      <View style={[styles.stats]}>
+      <View style={styles.stats}>
         <Text style={styles.heading}>Your top 🐕🐕🐕</Text>
 
         {this.renderList()}
