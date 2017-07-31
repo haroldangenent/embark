@@ -50,9 +50,15 @@ export default class Dog extends Component {
     return (
       <View
         style={[styles.flex, {
+          bottom: 0,
+          left: 0,
+          position: 'absolute',
+          right: 0,
+          top: 0,
           transform: [
             { translateX: this.state.swipe },
-          ]
+          ],
+          zIndex: this.props.zIndex,
         }]}
         onResponderMove={(event) => this.drag(event)}
         onStartShouldSetResponder={(event) => this.startDrag(event)}
